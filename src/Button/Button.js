@@ -1,7 +1,11 @@
 import { BasicButton } from './Button.styles'
 
-function Button({ handleClick, children }) {
-  return <BasicButton onClick={() => handleClick()}>{children}</BasicButton>
+function Button({ handleClick, children, noMargin }) {
+  return (
+    <BasicButton noMargin={noMargin} onClick={() => handleClick()}>
+      {children}
+    </BasicButton>
+  )
 }
 
 export default Button

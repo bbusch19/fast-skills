@@ -2,6 +2,7 @@ body {
   font-family: 'Roboto';
   background-color: #21252a;
   color: #bfc0c1;
+  box-sizing: border-box;
 }
 
 button {
