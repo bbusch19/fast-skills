@@ -17,7 +17,7 @@ function Home() {
     if (search) {
       try {
         const response = await axios.request({
-          url: 'http://www.omdbapi.com/?apikey=7a0a5d6f',
+          url: 'https://www.omdbapi.com/?apikey=7a0a5d6f',
           method: 'GET',
           params: {
             s: searchTerm,
