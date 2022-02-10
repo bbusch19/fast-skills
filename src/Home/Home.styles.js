@@ -14,6 +14,12 @@ export const Input = styled.input`
 
 export const InputGroup = styled.div`
   display: flex;
+
+  /* Fixes sizing weirdness for safari */
+  input {
+    width: 100%;
+    height: 100%;
+  }
 `
 
 export const MoviesContainer = styled.div`
