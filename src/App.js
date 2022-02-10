@@ -1,7 +1,7 @@
 import '@fontsource/roboto'
 import './App.css'
 import { RecoilRoot } from 'recoil'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './Home'
 import Playlist from './Playlist'
 

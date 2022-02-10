@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 import Button from '../Button'
 import MovieCard from '../MovieCard'
