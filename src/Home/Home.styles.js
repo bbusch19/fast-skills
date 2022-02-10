@@ -19,4 +19,5 @@ export const MoviesContainer = styled.div`
   flex-wrap: wrap;
   padding: 12px;
   gap: 12px;
+  justify-content: center;
 `
