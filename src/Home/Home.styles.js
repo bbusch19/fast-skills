@@ -5,6 +5,7 @@ export const Input = styled.input`
   border: 1px solid #bfc0c1;
   padding: 6px;
   -webkit-appearance: none;
+  border-radius: 0;
 
   &:focus {
     outline: none;
