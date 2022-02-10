@@ -3,7 +3,7 @@ import './App.css'
 import { RecoilRoot } from 'recoil'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import Home from './Home'
-import Playlists from './Playlists'
+import Playlist from './Playlist'
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <RecoilRoot>
         <Router>
           <Routes>
-            <Route exact path="/playlists" element={<Playlists />}></Route>
+            <Route exact path="/playlist" element={<Playlist />}></Route>
             <Route exact path="/" element={<Home />}></Route>
           </Routes>
         </Router>

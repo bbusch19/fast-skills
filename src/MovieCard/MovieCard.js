@@ -1,21 +1,27 @@
 import Button from '../Button/Button'
-import { Card } from './MovieCard.styles'
+import { Card, CardImage } from './MovieCard.styles'
 import { useRecoilState } from 'recoil'
 import { playlistState } from '../state'
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, hasButton = true }) {
   const [playlist, setPlaylist] = useRecoilState(playlistState)
 
   const handleClick = (movie) => {
     setPlaylist([...playlist, movie])
-    console.log(playlist)
   }
 
   return (
     <Card>
       <h3>{movie.Title}</h3>
-      <img alt="movie" src={movie.Poster} />
-      <Button handleClick={() => handleClick(movie)}>Add To Playlist</Button>
+      <CardImage alt="movie" src={movie.Poster} />
+      {hasButton &&
+        (!playlist.find((savedMovie) => movie.imdbID === savedMovie.imdbID) ? (
+          <Button handleClick={() => handleClick(movie)}>
+            Add To Playlist
+          </Button>
+        ) : (
+          <Button>Added!</Button>
+        ))}
     </Card>
   )
 }

@@ -14,9 +14,9 @@ export const InputGroup = styled.div`
   display: flex;
 `
 
-export const Header = styled.header`
-  padding: 24px;
+export const MoviesContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid #bfc0c1;
+  flex-wrap: wrap;
+  padding: 12px;
+  gap: 12px;
 `

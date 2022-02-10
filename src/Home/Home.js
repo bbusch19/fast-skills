@@ -2,30 +2,38 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Button from '../Button'
 import MovieCard from '../MovieCard'
-import { Header, Input, InputGroup } from './Home.styles'
+import { Input, InputGroup, MoviesContainer } from './Home.styles'
 import { Link } from 'react-router-dom'
+import Header from '../Header'
 
 function Home() {
   const [searchTerm, setSearchTerm] = useState('')
   const [movies, setMovies] = useState([])
+  const [error, setError] = useState('')
 
   const fetchMovies = async (search) => {
+    error && setError('')
+
     if (search) {
-      const response = await axios.request({
-        url: 'http://www.omdbapi.com/?apikey=7a0a5d6f',
-        method: 'GET',
-        params: {
-          s: searchTerm,
-        },
-      })
+      try {
+        const response = await axios.request({
+          url: 'http://www.omdbapi.com/?apikey=7a0a5d6f',
+          method: 'GET',
+          params: {
+            s: searchTerm,
+          },
+        })
 
-      setMovies(response.data.Search)
-
-      console.log(movies)
+        if (response.data.Error) {
+          setError(response.data.Error)
+        } else {
+          setMovies(response.data.Search)
+        }
+      } catch {
+        setError('An unknown error occured. Please try again later')
+      }
     }
   }
-
-  useEffect(() => {})
 
   const handleChange = (event) => {
     if (event.key === 'Enter') {
@@ -42,7 +50,12 @@ function Home() {
   return (
     <div className="home">
       <Header>
-        <Link to="/">Home</Link>
+        <Link to="/">
+          <h3>Home</h3>
+        </Link>
+        <Link to="/playlist">
+          <h3>View Playlist</h3>
+        </Link>
         <InputGroup>
           <Input
             placeholder="Search movies..."
@@ -55,11 +68,15 @@ function Home() {
           </Button>
         </InputGroup>
       </Header>
-      <div>
-        {movies.map((movie) => (
-          <MovieCard key={movie.imdbID} movie={movie} />
-        ))}
-      </div>
+      {error ? (
+        <p>{error}</p>
+      ) : (
+        <MoviesContainer>
+          {movies.map((movie) => (
+            <MovieCard key={movie.imdbID} movie={movie} />
+          ))}
+        </MoviesContainer>
+      )}
     </div>
   )
 }
